@@ -1,0 +1,40 @@
+{
+  "name": "apex-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel": "^6.23.0",
+    "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.2",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1"
+  },
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
