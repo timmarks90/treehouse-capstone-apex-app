@@ -1,39 +1,25 @@
 {
   "name": "apex-tracker",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Apex Legends tracker",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Tim Marks",
+  "license": "MIT",
   "dependencies": {
-    "babel": "^6.23.0",
-    "bootstrap": "^4.3.1",
+    "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
     "dotenv": "^8.1.0",
-    "eslint-utils": "^1.4.2",
     "express": "^4.17.1",
+    "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.6.0",
-    "react": "^16.9.0",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
-  },
-  "scripts": {
-    "start": "node server",
-    "server": "nodemon server"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
