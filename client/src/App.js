@@ -3,13 +3,14 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Search from './components/Search';
+import Profile from './components/Profile';
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      loading: true,
+      loading: false,
       searchQuery: ''
     };
   }
@@ -18,33 +19,21 @@ class App extends Component {
     document.body.className = "body-bg-image";
   }
 
-  // Run profile search
-  search = (query) => {
-    this.setState({loading: true});
-
-    fetch(`{../routes/Profile}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ 
-          loading: false,
-          searchQuery: query
-        });
-      })
-      .catch( err => {
-        console.log('There was an error fetching the data', err);
-      })
-  }
-
   render() {
     return (
       <BrowserRouter>
         <div className="container">
           <Header />
-          <Route path="/" render={ props => 
+          <Route exact path="/" render={ props => 
               <React.Fragment>
                 <Search onSearch={this.search} history={props.history} />
               </React.Fragment>
-            } />
+          } />
+          <Route path="/profile/:platform/:gamertag" render={ ({ props, match }) => 
+              <React.Fragment>
+                <Profile match={match} />
+              </React.Fragment>
+          } />
         </div>
       </BrowserRouter>
     );

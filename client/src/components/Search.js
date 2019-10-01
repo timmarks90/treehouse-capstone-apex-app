@@ -20,7 +20,7 @@ export default class Search extends Component {
         this.setState({
             [name]: value
         });
-      }
+    }
 
     // Run search on submit of gamertag
     handleSubmit = e => {
@@ -28,7 +28,7 @@ export default class Search extends Component {
         if (this.state.gamertag === '') {
             console.log('Please enter a gamertag');
         } else {
-            console.log('will redirect');
+            this.props.history.push(`/profile/${this.state.platform}/${this.state.gamertag}`);
         }
     }
 
@@ -39,7 +39,7 @@ export default class Search extends Component {
                 <form className="search-form" onSubmit={ this.handleSubmit } >
                     <div class="form-group">
                         <label for="platform">Platform</label>
-                        <select name="platform" id="platform" value={this.state.value} onChange={this.handleChange} >
+                        <select name="platform" id="platform" value={this.state.value} ref={ input => this.query = input } onChange={this.handleChange} >
                             <option value="psn">Playstation</option>
                             <option value="xbl">Xbox</option>
                             <option value="Origin">Origin</option>

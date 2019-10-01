@@ -5,7 +5,7 @@ export default class Header extends Component {
     render() {
         return (
             <div>
-                <img src={apexLogo} alt="Apex Legends Logo" />
+                <a href="/"><img src={apexLogo} alt="Apex Legends Logo" /></a>
             </div>
         )
     }
