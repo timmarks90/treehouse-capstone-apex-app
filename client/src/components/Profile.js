@@ -9,7 +9,7 @@ export default class Profile extends Component {
           gamertag: this.gamertag,
           loading: true,
           error: null,
-          profileData: null
+          profileData: {}
         };
     }
 
@@ -18,27 +18,30 @@ export default class Profile extends Component {
         document.body.className = "body-bg-no-image";
 
         // Get user profile information
-        fetch(`http://localhost:5000/api/v1/profile/${this.props.match.params.platform}/${this.props.match.params.gamertag}`)
+        fetch(`/api/v1/profile/${this.props.match.params.platform}/${this.props.match.params.gamertag}`)
         .then(res => res.json())
         .then(res => {
             console.log('success')
+            console.log(res)
             this.setState({ 
-            profileData: res.data.data,
-            loading: false
+                profileData: res.data,
+                loading: false
             });
+            console.log(this.state.profileData)
         })
         .catch(err => {
             console.log('failed');
-            console.log(err);
+            this.setState({ 
+                error: err
+            })
         })
-        console.log(this.state.profileData);
     }
 
     render() {
         return (
-            <div>
-                Profile
-            </div>
-        )
+            <h3>
+                Legend: {this.state.profileData}
+            </h3>
+        );
     }
 }

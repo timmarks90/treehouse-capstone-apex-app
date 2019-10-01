@@ -7,7 +7,7 @@ export default class Search extends Component {
         this.state = {
             platform: 'psn',
             gamertag: ''
-        }
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
