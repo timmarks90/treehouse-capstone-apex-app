@@ -5,11 +5,11 @@ export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          platform: props.platform,
-          gamertag: props.gamertag,
+          platform: this.platform,
+          gamertag: this.gamertag,
           loading: true,
           error: null,
-          profileData: {}
+          profileData: null
         };
     }
 
@@ -38,10 +38,10 @@ export default class Profile extends Component {
     }
 
     render() {
+        const profile = this.state.profileData;
         return (
-            // Display user profile info on page
             <h3>
-                {/* Legend: {profile} */}
+                Legend name: {this.state.profileData}
             </h3>
         );
     }
