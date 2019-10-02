@@ -5,8 +5,8 @@ export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          platform: this.platform,
-          gamertag: this.gamertag,
+          platform: props.platform,
+          gamertag: props.gamertag,
           loading: true,
           error: null,
           profileData: {}
@@ -39,8 +39,9 @@ export default class Profile extends Component {
 
     render() {
         return (
+            // Display user profile info on page
             <h3>
-                Legend: {this.state.profileData}
+                {/* Legend: {profile} */}
             </h3>
         );
     }

@@ -42,7 +42,6 @@ export default class Search extends Component {
                         <select name="platform" id="platform" value={this.state.value} ref={ input => this.query = input } onChange={this.handleChange} >
                             <option value="psn">Playstation</option>
                             <option value="xbl">Xbox</option>
-                            <option value="Origin">Origin</option>
                         </select>
                     </div>
                     <div class="form-group">
