@@ -39,7 +39,7 @@ export default class Profile extends Component {
         return (
             <div className="container">
                 {console.log(this.state.profileData)} {/*Shows data in console */}
-                {console.log(this.state.profileData.platformInfo.platformUserHandle)} {/* Triggers error "Cannot read property 'platformUserHandle" */}
+                {console.log(this.state.profileData.platformInfo)} {/* Shows "undefined" */}
                 
                 {/* Get user profile name */}
                 {this.state.profileData.map((profile, index) => (
