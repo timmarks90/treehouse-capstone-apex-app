@@ -9,7 +9,7 @@ export default class Profile extends Component {
           gamertag: this.gamertag,
           loading: true,
           error: null,
-          profileData: null
+          profileData: []
         };
     }
 
@@ -21,13 +21,11 @@ export default class Profile extends Component {
         fetch(`/api/v1/profile/${this.props.match.params.platform}/${this.props.match.params.gamertag}`)
         .then(res => res.json())
         .then(res => {
-            console.log('success')
-            console.log(res)
+            console.log(res.data)
             this.setState({ 
-                profileData: res.data,
+                profileData: [res.data],
                 loading: false
             });
-            console.log(this.state.profileData)
         })
         .catch(err => {
             console.log('failed');
@@ -38,11 +36,16 @@ export default class Profile extends Component {
     }
 
     render() {
-        const profile = this.state.profileData;
         return (
-            <h3>
-                Legend name: {this.state.profileData}
-            </h3>
+            <div className="container">
+                {console.log(this.state.profileData)} {/*Shows data in console */}
+                {console.log(this.state.profileData.platformInfo.platformUserHandle)} {/* Triggers error "Cannot read property 'platformUserHandle" */}
+                
+                {/* Get user profile name */}
+                {this.state.profileData.map((profile, index) => (
+                    <h2 key="index">Username: {profile.platformInfo.platformUserHandle}</h2>
+                ))}
+            </div>
         );
     }
 }
