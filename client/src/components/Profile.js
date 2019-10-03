@@ -9,7 +9,7 @@ export default class Profile extends Component {
           gamertag: this.gamertag,
           loading: true,
           error: null,
-          profileData: []
+          profileData: null
         };
     }
 
@@ -23,7 +23,7 @@ export default class Profile extends Component {
         .then(res => {
             console.log(res.data)
             this.setState({ 
-                profileData: [res.data],
+                profileData: res.data,
                 loading: false
             });
         })
@@ -39,12 +39,8 @@ export default class Profile extends Component {
         return (
             <div className="container">
                 {console.log(this.state.profileData)} {/*Shows data in console */}
-                {console.log(this.state.profileData.platformInfo)} {/* Shows "undefined" */}
+                {console.log(this.state.profileData.platformInfo)} {/* Shows error "Cannot read property 'platformInfo' of null" */}
                 
-                {/* Get user profile name */}
-                {this.state.profileData.map((profile, index) => (
-                    <h2 key="index">Username: {profile.platformInfo.platformUserHandle}</h2>
-                ))}
             </div>
         );
     }
