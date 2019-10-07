@@ -1,0 +1,87 @@
+.profile-container {
+    background: #fff;
+    color: #fff;
+    margin: 1rem auto;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    max-width: 700px;
+    box-shadow: 5px 5px 25px rgba(0,0,0,.1);
+  }
+  h1.gamertag {
+    font-size: 2rem;
+    box-shadow: 5px 5px 25px rgba(0,0,0,.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+  }
+  .body-bg-image {
+    background: var(--primary-color) url("./assets/apex-bg.jpg") no-repeat top
+      center;
+  }
+  li h4{
+    color: #8b8b8b;
+  }
+  .back{
+    color: #fff;
+    background: var(--primary-color);
+    border-radius: 6px;
+  }
+  .back:hover{
+    color: #fff;
+    background: #235dc7;
+    border-radius: 6px;
+  }
+  a {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 0.8rem;
+  }
+  a:hover {
+    color: #ccc;
+  }
+  .platform-avatar {
+    width: 40px;
+    margin-right: 0.7rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+  li {
+    box-shadow: 5px 5px 25px rgba(0,0,0,.1);
+    padding: 1rem;
+    margin-bottom: 0.7rem;
+    border-radius: 10px;
+  }
+  li p {
+    font-size: 2rem;
+    color: var(--primary-color);
+  }
+  li:first-child p {
+    font-size: 1.5rem;
+  }
+  li span {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 1.5rem;
+      display: block;
+      text-align: center;
+    }
+    .platform-avatar {
+      display: none;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    li p {
+      font-size: 1.5rem;
+    }
+  }

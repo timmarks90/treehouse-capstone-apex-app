@@ -6,6 +6,10 @@
   height: 40vmin;
 }
 
+.header {
+  text-align: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -26,7 +30,7 @@ img {
 }
 
 :root {
-  --primary-color: #953036;
+  --primary-color: #1b489c;
 }
 * {
   box-sizing: border-box;
@@ -50,7 +54,7 @@ ul {
   background: var(--primary-color);
 }
 .body-bg-image {
-  background: var(--primary-color) url("./assets/octane.png") no-repeat top
+  background: var(--primary-color) url("./assets/apex-bg.jpg") no-repeat top
     center;
 }
 .container {
@@ -63,10 +67,12 @@ ul {
   margin: 1rem 0;
 }
 .search {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
   border: 4px #fff solid;
   margin-top: 1rem;
   padding: 2rem;
+  box-shadow: 5px 15px 25px rgba(0,0,0,.25);
+  border-radius: 6px;
 }
 input,
 select,
@@ -87,6 +93,7 @@ textarea {
   outline: none;
   margin-top: 1rem;
 }
+
 @media (max-width: 700px) {
   body {
     background: var(--primary-color);

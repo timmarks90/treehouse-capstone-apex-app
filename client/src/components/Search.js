@@ -34,22 +34,22 @@ export default class Search extends Component {
 
     render() {
         return (
-            <section class="search">
+            <section className="search">
                 <h1>Look Up Player Stats</h1>
                 <form className="search-form" onSubmit={ this.handleSubmit } >
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="platform">Platform</label>
                         <select name="platform" id="platform" value={this.state.value} ref={ input => this.query = input } onChange={this.handleChange} >
                             <option value="psn">Playstation</option>
                             <option value="xbl">Xbox</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="gamertag">Gamertag</label>
-                        <input type="text" value={this.state.value} onChange={this.handleChange} name="gamertag" id="gamertag" placeholder="Playstation ID, Xbox Live gamertag, or Origin ID" />
+                        <input type="text" value={this.state.value} onChange={this.handleChange} name="gamertag" id="gamertag" placeholder="Playstation ID or Xbox Live gamertag" />
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Submit" class="btn" />
+                    <div className="form-group">
+                        <input type="submit" value="Submit" className="btn" />
                     </div>
                 </form>
             </section>

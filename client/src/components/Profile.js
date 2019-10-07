@@ -1,46 +1,78 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../Profile.css';
 
 export default class Profile extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-          platform: this.platform,
-          gamertag: this.gamertag,
+          platform: this.props.match.params.platform,
+          gamertag: this.props.match.params.gamertag,
           loading: true,
           error: null,
-          profileData: null
+          profileData: [],
+          metaData: [],
+          season2Wins: [],
+          segment: []
         };
     }
 
     componentDidMount() {
-        // Hide background image
-        document.body.className = "body-bg-no-image";
-
         // Get user profile information
         fetch(`/api/v1/profile/${this.props.match.params.platform}/${this.props.match.params.gamertag}`)
         .then(res => res.json())
         .then(res => {
             console.log(res.data)
             this.setState({ 
-                profileData: res.data,
+                profileData: res.data.platformInfo,
+                metaData: res.data.metadata,
+                season2Wins: res.data.segments[0].stats.season2Wins,
+                segment: res.data.segments[1].metadata,
                 loading: false
             });
         })
         .catch(err => {
-            console.log('failed');
             this.setState({ 
                 error: err
-            })
-        })
+            });
+        });
     }
 
     render() {
+        let loading = this.state.loading;
+        let error = this.state.error;
+        ;
         return (
-            <div className="container">
-                {console.log(this.state.profileData)} {/*Shows data in console */}
-                {console.log(this.state.profileData.platformInfo)} {/* Shows error "Cannot read property 'platformInfo' of null" */}
-                
+            <div className="profile-container">
+                <h1 className="gamertag">
+                    <img src={this.state.profileData.avatarUrl} className="platform-avatar" alt=""/>
+                    {loading && !error ? 'Loading profile...' : this.state.profileData.platformUserHandle}
+                    {error ? 'Profile not found' : ''}
+                </h1>
+                <div className="grid">
+                    <div>
+                        <img src={this.state.segment.imageUrl} alt=""/>
+                    </div>
+                    <div style={{visibility: loading || error ? 'hidden' : 'visible' }}>
+                        <ul>
+                            <li>
+                                <h4>Last Played Legend</h4>
+                                <p>{this.state.metaData.activeLegendName}</p>
+                            </li>
+                            <li>
+                                <h4>Season 2 Wins</h4>
+                                <p>{this.state.season2Wins.displayValue}</p>
+                                <span>Percentile: {this.state.season2Wins.percentile}%</span>
+                            </li>
+                            <li>
+                                <h4>Current Season</h4>
+                                <p>{this.state.metaData.currentSeason}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <Link to="/" className="back">Go Back</Link>
             </div>
         );
     }

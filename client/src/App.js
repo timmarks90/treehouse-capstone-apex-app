@@ -15,10 +15,10 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.body.className = "body-bg-image";
   }
-
+  
   render() {
     return (
       <BrowserRouter>
@@ -26,7 +26,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" render={ props => 
               <React.Fragment>
-                <Search onSearch={this.search} history={props.history} />
+                <Search history={props.history} />
               </React.Fragment>
           } />
           <Route path="/profile/:platform/:gamertag" render={ ({ props, match }) => 
