@@ -13,7 +13,7 @@ export default class Profile extends Component {
           error: null,
           profileData: [],
           metaData: [],
-          season2Wins: [],
+          season3Wins: [],
           segment: []
         };
     }
@@ -27,7 +27,7 @@ export default class Profile extends Component {
             this.setState({ 
                 profileData: res.data.platformInfo,
                 metaData: res.data.metadata,
-                season2Wins: res.data.segments[0].stats.season2Wins,
+                season3Wins: res.data.segments[0].stats.season3Wins,
                 segment: res.data.segments[1].metadata,
                 loading: false
             });
@@ -42,7 +42,8 @@ export default class Profile extends Component {
     render() {
         let loading = this.state.loading;
         let error = this.state.error;
-        ;
+        let displaySeason3Wins = this.state.season3Wins;
+
         return (
             <div className="profile-container">
                 <h1 className="gamertag">
@@ -61,9 +62,18 @@ export default class Profile extends Component {
                                 <p>{this.state.metaData.activeLegendName}</p>
                             </li>
                             <li>
-                                <h4>Season 2 Wins</h4>
-                                <p>{this.state.season2Wins.displayValue}</p>
-                                <span>Percentile: {this.state.season2Wins.percentile}%</span>
+                                {displaySeason3Wins ? (
+                                    <>
+                                    <h4>Season 3 Wins</h4>
+                                    <p>{this.state.season3Wins.displayValue}</p>
+                                    <span>Percentile: {this.state.season3Wins.percentile}%</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h4>Platform</h4>
+                                        <p>{this.state.profileData.platformSlug}</p>
+                                    </>
+                                )}
                             </li>
                             <li>
                                 <h4>Current Season</h4>
