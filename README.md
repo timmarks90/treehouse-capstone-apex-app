@@ -15,7 +15,7 @@ Install the dependencies
 ```
 npm install
 ```
-The app uses React frontend and Express backend, so to start both together run
+The app uses React frontend and Express backend, so to start both together run:
 ```
 npm run dev
 ```
