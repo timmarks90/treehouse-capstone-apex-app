@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load Env config
 dotenv.config({
@@ -14,18 +15,18 @@ if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
+// Profile routes
+app.use('/api/v1/profile', require('./routes/profile'));
+
 // Production
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static(__dirname + '/public/'));
 }
 
 // Single Page App
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+app.get(/.*/, (req, res) => {
+    res.sendFile(path.resolve(__dirname + '/public/index.html'));
 });
-
-// Profile routes
-app.use('/api/v1/profile', require('./routes/profile'));
 
 const port = process.env.PORT || 8000;
 
