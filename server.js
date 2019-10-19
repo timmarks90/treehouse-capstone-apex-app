@@ -20,12 +20,12 @@ app.use('/api/v1/profile', require('./routes/profile'));
 
 // Production
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(__dirname + '/public/'));
+    app.use(express.static(path.join(__dirname, 'client/build')));
 }
 
 // Single Page App
-app.get(/.*/, (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/public/index.html'));
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 const port = process.env.PORT || 8000;
