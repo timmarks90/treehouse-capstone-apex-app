@@ -11,7 +11,7 @@ Move into the app
 ```
 cd treehouse-capstone-apex-app
 ```
-Install the dependencies
+Install the dependencies in both the root and client directories
 ```
 npm install
 ```
